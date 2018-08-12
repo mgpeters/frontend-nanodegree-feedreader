@@ -7,7 +7,7 @@
  */
 
 // The names and URLs to all of the feeds we'd like available.
-var allFeeds = undefined;/*[
+var allFeeds = [
     {
         name: 'undefined',
         url: 'http://blog.udacity.com/feed'
@@ -21,7 +21,7 @@ var allFeeds = undefined;/*[
         name: 'Linear Digressions',
         url: 'http://feeds.feedburner.com/udacity-linear-digressions'
     }
-];*/
+];
 
 /* This function starts up our application. The Google Feed
  * Reader API is loaded asynchonously and will then call this
