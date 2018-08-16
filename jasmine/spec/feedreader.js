@@ -95,13 +95,18 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+        let entries;
+
         beforeEach(function(done){
          //async code
+        loadFeed(0, function(){
+            entries = $(".entry");
             done();
+            });
         });
 
         it('should have (at least) a single entry within feed', function(done){
-
+            expect(entries.length).toBeGreaterThan(0);
             done();
         });
     })
