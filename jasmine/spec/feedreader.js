@@ -121,20 +121,21 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-        let feedLi = $("li"),
-            feed;
-        console.log(feedLi);
+        let originalFeed,
+            refreshedFeed;
 
         beforeEach(function(done){
             //async code
-            feed = $("a.entry-link");
-            console.log(feed[1].href);
-            feedLi[1].click();
-            done();
+            originalFeed = $("a.entry-link");
+
+            loadFeed(2, function(){
+                refreshedFeed = $("a.entry-link");
+                done();
+                });
            });
 
         it('should load changes', function(done){
-
+            expect(originalFeed[2].href).not.toEqual(refreshedFeed[2].href);
             done();
         });
     })
