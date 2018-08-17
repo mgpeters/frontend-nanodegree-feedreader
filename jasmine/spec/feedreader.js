@@ -63,6 +63,7 @@ $(function() {
         it('is hidden by default', function(){
             var htmlClass = $('body').attr('class');
             expect(htmlClass).toMatch('menu-hidden');
+            expect(htmlClass).toBeDefined();
         });
 
          /* TODO: Write a test that ensures the menu changes
@@ -78,12 +79,15 @@ $(function() {
             let htmlClass = $('body').attr('class');
 
             expect(htmlClass).toMatch('');
+            expect(htmlClass).toBeDefined();
 
             clickCheck.click();
 
             htmlClass = $('body').attr('class');
 
             expect(htmlClass).toMatch('menu-hidden');
+            expect(htmlClass).toBeDefined();
+
         });
     })
 
@@ -99,14 +103,15 @@ $(function() {
 
         beforeEach(function(done){
          //async code
-        loadFeed(0, function(){
-            entries = $(".entry");
-            done();
-            });
+            loadFeed(0, function(){
+                entries = $(".entry");
+                done();
+                });
         });
 
         it('should have (at least) a single entry within feed', function(done){
             expect(entries.length).toBeGreaterThan(0);
+            expect(entries).toBeDefined();
             done();
         });
     })
@@ -116,10 +121,16 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        let feedLi = $("li"),
+            feed;
+        console.log(feedLi);
 
         beforeEach(function(done){
             //async code
-               done();
+            feed = $("a.entry-link");
+            console.log(feed[1].href);
+            feedLi[1].click();
+            done();
            });
 
         it('should load changes', function(done){
