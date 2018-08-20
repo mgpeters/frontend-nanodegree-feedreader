@@ -121,17 +121,18 @@ $(function() {
             refreshedFeed;
 
         beforeEach(function(done){
-            //async code
-            originalFeed = $("a.entry-link");
+            loadFeed(0, function(){
+                originalFeed = $(".feed").html();
 
-            loadFeed(2, function(){
-                refreshedFeed = $("a.entry-link");
-                done();
-                });
-           });
+                loadFeed(2, function(){
+                    refreshedFeed = $(".feed").html();
+                    done();
+                })
+            })
+        });
 
         it('should load changes', function(done){
-            expect(originalFeed[2].href).not.toEqual(refreshedFeed[2].href);
+            expect(originalFeed).not.toEqual(refreshedFeed);
             done();
         });
     })
