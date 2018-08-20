@@ -34,7 +34,7 @@ $(function() {
         it('URLs are defined', function(){
             allFeeds.forEach(function(input){
                 expect(input.url).toBeDefined();
-                expect(input.url.length).not.toBe(0);
+                expect(input.url.length).not.toBe(0); //specified the url.length as per review 08.20.18
             });
         });
 
@@ -46,7 +46,7 @@ $(function() {
         it('names are defined', function(){
             allFeeds.forEach(function(element){
                 expect(element.name).toBeDefined();
-                expect(element.name.length).not.toBe(0);
+                expect(element.name.length).not.toBe(0); //specified the name.length as per review 08.20.18
             });
         });
     });
@@ -59,7 +59,7 @@ $(function() {
          */
         it('is hidden by default', function(){
             var htmlClass = $('body').attr('class');
-            expect(htmlClass).toMatch('menu-hidden');
+            expect(htmlClass).toContain('menu-hidden'); //Changed to 'toContain' as per review 08.20.18
             expect(htmlClass).toBeDefined();
         });
 
