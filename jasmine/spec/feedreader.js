@@ -22,11 +22,9 @@ $(function() {
          * page?
          */
         it('are defined', function(){
-            allFeeds.forEach(function(input){
-                expect(input).toBeDefined();
-                expect(input.url.length).not.toBe(0);
+                expect(allFeeds).toBeDefined();
+                expect(allFeeds.length).not.toBe(0);
             })
-        })
 
 
         /* A test that loops through each feed
@@ -34,9 +32,9 @@ $(function() {
          * and that the URL is not empty.
          */
         it('URLs are defined', function(){
-            allFeeds.forEach(function(element){
-                expect(element.url).toBeDefined();
-                expect(element.length).not.toBe(0);
+            allFeeds.forEach(function(input){
+                expect(input.url).toBeDefined();
+                expect(input.url.length).not.toBe(0);
             });
         });
 
@@ -48,7 +46,7 @@ $(function() {
         it('names are defined', function(){
             allFeeds.forEach(function(element){
                 expect(element.name).toBeDefined();
-                expect(element.length).not.toBe(0);
+                expect(element.name.length).not.toBe(0);
             });
         });
     });
