@@ -75,14 +75,14 @@ $(function() {
 
             let htmlClass = $('body').attr('class');
 
-            expect(htmlClass).toMatch('');
+            expect(htmlClass).not.toContain('menu-hidden'); //Changed to 'toContain' as per review 08.20.18
             expect(htmlClass).toBeDefined();
 
             clickCheck.click();
 
             htmlClass = $('body').attr('class');
 
-            expect(htmlClass).toMatch('menu-hidden');
+            expect(htmlClass).toContain('menu-hidden'); //Changed to 'toContain' as per review 08.20.18
             expect(htmlClass).toBeDefined();
 
         });
@@ -100,7 +100,7 @@ $(function() {
         beforeEach(function(done){
          //async code
             loadFeed(0, function(){
-                entries = $(".entry");
+                entries = $(".feed .entry"); //Changed to grad decendent of feed as per review - 08.20.18
                 done();
                 });
         });
